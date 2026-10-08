@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>For Zai ♡</title>
+
+    <!-- Fancy fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+
+            background:
+                linear-gradient(
+                    rgba(25, 15, 10, 0.28),
+                    rgba(25, 15, 10, 0.28)
+                ),
+                url("letter.gif") center center / cover fixed no-repeat;
+
+            color: #f7df9e;
+
+            font-family:
+                "Cormorant Garamond",
+                Georgia,
+                serif;
+
+            overflow-x: hidden;
+        }
+
+        /* Soft golden atmosphere */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(255, 221, 145, 0.10),
+                    transparent 65%
+                );
+
+            pointer-events: none;
+        }
+
+        .letter-page {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 80px 20px;
+        }
+
+        .letter {
+            width: min(850px, 94vw);
+
+            padding:
+                clamp(45px, 8vw, 90px)
+                clamp(30px, 8vw, 90px);
+
+            background: rgba(20, 12, 8, 0.48);
+
+            border: 1px solid rgba(247, 223, 158, 0.45);
+
+            box-shadow:
+                0 25px 80px rgba(0, 0, 0, 0.55),
+                inset 0 0 60px rgba(247, 223, 158, 0.04);
+
+            backdrop-filter: blur(3px);
+
+            animation: letterAppear 1.5s ease forwards;
+        }
+
+        .title {
+            text-align: center;
+
+            font-family: "Great Vibes", cursive;
+
+            font-size: clamp(3.2rem, 9vw, 6rem);
+
+            font-weight: 400;
+
+            color: #f5d47c;
+
+            text-shadow:
+                0 2px 10px rgba(0, 0, 0, 0.7),
+                0 0 20px rgba(247, 207, 111, 0.2);
+
+            margin-bottom: 35px;
+        }
+
+        .divider {
+            width: 100px;
+            height: 1px;
+
+            margin: 0 auto 40px;
+
+            background: #e7c76e;
+
+            box-shadow:
+                0 0 10px rgba(231, 199, 110, 0.5);
+        }
+
+        .letter-text {
+            font-size: clamp(1.2rem, 2.8vw, 1.5rem);
+
+            line-height: 2;
+
+            color: #f7df9e;
+
+            text-shadow:
+                0 2px 7px rgba(0, 0, 0, 0.8);
+        }
+
+        .letter-text p {
+            margin-bottom: 28px;
+        }
+
+        .opening {
+            font-family: "Great Vibes", cursive;
+
+            font-size: clamp(2rem, 5vw, 3rem);
+
+            color: #f3d27d;
+
+            margin-bottom: 25px;
+        }
+
+        .highlight {
+            color: #ffe8a8;
+
+            font-weight: 600;
+        }
+
+        .ending {
+            margin-top: 45px;
+
+            text-align: right;
+
+            font-family: "Great Vibes", cursive;
+
+            font-size: clamp(2rem, 5vw, 3rem);
+
+            line-height: 1.5;
+
+            color: #f5d47c;
+        }
+
+        .heart {
+            display: block;
+
+            text-align: center;
+
+            font-size: 2rem;
+
+            margin-top: 45px;
+
+            color: #f5d47c;
+
+            animation: glow 2.5s ease-in-out infinite;
+        }
+
+        .back {
+            display: block;
+
+            width: fit-content;
+
+            margin: 45px auto 0;
+
+            color: #f7df9e;
+
+            text-decoration: none;
+
+            font-size: 1.1rem;
+
+            letter-spacing: 1px;
+
+            padding: 10px 20px;
+
+            border: 1px solid rgba(247, 223, 158, 0.45);
+
+            transition:
+                background 0.3s ease,
+                color 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        .back:hover {
+            background: rgba(247, 223, 158, 0.15);
+
+            color: #fff1c7;
+
+            transform: translateY(-2px);
+        }
+
+        @keyframes letterAppear {
+
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        @keyframes glow {
+
+            0%, 100% {
+                opacity: 0.7;
+                text-shadow: 0 0 5px rgba(245, 212, 124, 0.2);
+            }
+
+            50% {
+                opacity: 1;
+                text-shadow: 0 0 20px rgba(245, 212, 124, 0.65);
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .letter-page {
+                padding: 40px 12px;
+            }
+
+            .letter {
+                padding: 45px 25px;
+            }
+
+            .letter-text {
+                line-height: 1.8;
+            }
+
+            .ending {
+                text-align: center;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <main class="letter-page">
+
+        <article class="letter">
+
+            <h1 class="title">
+                Dear Zai ♡
+            </h1>
+
+            <div class="divider"></div>
+
+            <div class="letter-text">
+
+                <p class="opening">
+                    Happy birthday, pretty girl. ♡
+                </p>
+
+                <p>
+                    I don't think I say it nearly enough, but I'm genuinely
+                    so happy that I got to know you. It's been more than a
+                    year now, which is kind of crazy to think about, and
+                    somehow you've become one of the people I care about
+                    the most.
+                </p>
+
+                <p>
+                    Even though we don't talk as much as we used to lately,
+                    that doesn't suddenly erase how much you mean to me.
+                    You're still someone I love dearly, and I hope you
+                    always know that.
+                </p>
+
+                <p>
+                    I hope this year brings you so many beautiful things.
+                    I hope you get to experience the kind of happiness
+                    you deserve.
+                </p>
+
+                <p>
+                    And please, please remember this:
+                    <span class="highlight">
+                        don't let other people's opinions decide how you
+                        see yourself.
+                    </span>
+                </p>
+
+                <p>
+                    There are always going to be people who have something
+                    negative to say (they can grab their opinions and shove them up their ass). Some people (we know who) seem to wake up every
+                    morning and immediately think of you and ways of how to hate on you even more (which is really weird..)
+                </p>
+
+                <p>
+                    Their opinions don't define you.
+                    Their words don't make you less beautiful.
+                    And you never need to think about them because they're just a bunch of insects xx
+                </p>
+
+                <p>
+                    Keep focusing on yourself and on the things that make
+                    you happy, because nobody else deserves that kind of attention!
+                </p>
+
+                <p>
+                    Because you're amazing, Zai.
+                    You're beautiful, you're smart, and you're really funny
+                </p>
+
+                <p>
+                    So today, I hope you let yourself be celebrated.
+                    Eat something you love, laugh a lot, take a
+                    million pictures, and enjoy being the gorgeous birthday
+                    girl you are. ♡
+                </p>
+
+                <p>
+                    Thank you for being part of my life.
+                    I'm really, really glad I met you.
+                </p>
+
+                <div class="ending">
+                    Happy birthday, Zai.<br>
+                    I love you so much. ♡
+                </div>
+
+                <div class="heart">
+                    ♡
+                </div>
+
+            </div>
+
+            <a href="index.html" class="back">
+                ← back to the beginning
+            </a>
+
+        </article>
+
+    </main>
+
+</body>
+</html>

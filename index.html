@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>For Zai ♡</title>
+
+    <!-- Fancy fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                linear-gradient(rgba(255, 245, 248, 0.35), rgba(255, 245, 248, 0.35)),
+                url("background.png") center center / cover fixed no-repeat;
+
+            color: #fff;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            overflow-x: hidden;
+        }
+
+        /* Soft overlay so the text stays readable */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: rgba(70, 25, 45, 0.15);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .page {
+            width: 100%;
+        }
+
+        /* -------------------------
+           INTRO
+        ------------------------- */
+
+        .intro {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 25px;
+        }
+
+        .small-title {
+            font-family: "Great Vibes", cursive;
+            font-size: clamp(2rem, 6vw, 4rem);
+            margin-bottom: 5px;
+            text-shadow:
+                0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .intro h1 {
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-shadow:
+                0 3px 15px rgba(0, 0, 0, 0.45);
+        }
+
+        .intro p {
+            max-width: 600px;
+            margin-top: 20px;
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            line-height: 1.6;
+            text-shadow:
+                0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .scroll-hint {
+            margin-top: 55px;
+            font-size: 1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.9;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .scroll-arrow {
+            display: block;
+            margin-top: 10px;
+            font-size: 1.5rem;
+        }
+
+        /* -------------------------
+           PHOTO SECTIONS
+        ------------------------- */
+
+        .memories {
+            width: min(900px, 92%);
+            margin: auto;
+            padding: 80px 0 120px;
+        }
+
+        .memory {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 55px;
+            margin-bottom: 80px;
+
+            opacity: 0;
+            transform: translateY(45px);
+            animation: appear 1.2s ease forwards;
+        }
+
+        .memory:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        /* Staggered appearance */
+        .memory:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .memory:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .memory:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .memory:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .memory:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .photo-frame {
+            flex: 0 0 auto;
+            width: min(330px, 75vw);
+            padding: 12px;
+            background: rgba(255, 250, 252, 0.93);
+
+            border-radius: 4px;
+
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.35),
+                0 0 0 1px rgba(255, 255, 255, 0.5);
+
+            transform: rotate(-2deg);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .memory:nth-child(even) .photo-frame {
+            transform: rotate(2deg);
+        }
+
+        .photo-frame:hover {
+            transform: rotate(0deg) scale(1.03);
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .photo-frame img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 430px;
+            object-fit: contain;
+        }
+
+        .compliment {
+            flex: 1;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .compliment .little-heart {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .compliment h2 {
+            font-family: "Great Vibes", cursive;
+            font-size: clamp(2.1rem, 5vw, 3.4rem);
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 15px;
+
+            text-shadow:
+                0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .compliment p {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            text-shadow:
+                0 2px 8px rgba(0, 0, 0, 0.45);
+        }
+
+        /* -------------------------
+           FINAL SECTION
+        ------------------------- */
+
+        .final-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 25px;
+        }
+
+        .final-section h2 {
+            font-family: "Great Vibes", cursive;
+            font-size: clamp(2.8rem, 8vw, 5rem);
+            font-weight: 400;
+            text-shadow:
+                0 3px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .final-section p {
+            max-width: 600px;
+            margin: 20px auto 40px;
+            font-size: 1.3rem;
+            line-height: 1.7;
+            text-shadow:
+                0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .letter-link {
+            display: inline-block;
+            position: relative;
+            text-decoration: none;
+        }
+
+        .letter-image {
+            width: min(280px, 70vw);
+            height: auto;
+            display: block;
+
+            border-radius: 8px;
+
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.45);
+
+            transition:
+                transform 0.5s ease,
+                box-shadow 0.5s ease;
+        }
+
+        .letter-link:hover .letter-image {
+            transform: translateY(-10px) rotate(-2deg) scale(1.04);
+
+            box-shadow:
+                0 30px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .click-text {
+            margin-top: 20px;
+            font-family: "Great Vibes", cursive;
+            font-size: 2rem;
+            color: #fff;
+            text-shadow:
+                0 2px 10px rgba(0, 0, 0, 0.5);
+
+            animation: pulse 2s infinite;
+        }
+
+        /* -------------------------
+           ANIMATIONS
+        ------------------------- */
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(8px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.75;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(45px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* -------------------------
+           PHONE
+        ------------------------- */
+
+        @media (max-width: 700px) {
+
+            .memory,
+            .memory:nth-child(even) {
+                flex-direction: column;
+                min-height: auto;
+                margin-bottom: 120px;
+                gap: 25px;
+            }
+
+            .memories {
+                padding-top: 40px;
+            }
+
+            .photo-frame {
+                width: min(290px, 78vw);
+            }
+
+            .compliment {
+                padding: 10px 20px;
+            }
+
+            .compliment h2 {
+                font-size: 2.7rem;
+            }
+
+            .compliment p {
+                font-size: 1.15rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- INTRO -->
+    <section class="intro">
+
+        <div class="small-title">A little something for</div>
+
+        <h1>Zai ♡</h1>
+
+        <p>
+            For one of the loveliest people I've had the privilege
+            of knowing for more than a year now.
+        </p>
+
+        <div class="scroll-hint">
+            keep scrolling
+            <span class="scroll-arrow">↓</span>
+        </div>
+
+    </section>
+
+
+    <!-- PHOTOS + COMPLIMENTS -->
+    <section class="memories">
+
+        <!-- PHOTO 1 -->
+        <div class="memory">
+
+            <div class="photo-frame">
+                <img src="pretty1.jpg" alt="A beautiful picture of Zai">
+            </div>
+
+            <div class="compliment">
+                <div class="little-heart">♡</div>
+
+                <h2>You are genuinely beautiful.</h2>
+
+                <p>
+                    And not just in the obvious way.
+                    There's something about you that makes you
+                    stand out without even trying.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- PHOTO 2 -->
+        <div class="memory">
+
+            <div class="photo-frame">
+                <img src="pretty2.jpg" alt="A beautiful picture of Zai">
+            </div>
+
+            <div class="compliment">
+                <div class="little-heart">♡</div>
+
+                <h2>Your smile is everything.</h2>
+
+                <p>
+                    You have one of those smiles that
+                    are just so bright
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- PHOTO 3 -->
+        <div class="memory">
+
+            <div class="photo-frame">
+                <img src="pretty3.jpg" alt="A beautiful picture of Zai">
+            </div>
+
+            <div class="compliment">
+                <div class="little-heart">♡</div>
+
+                <h2>That beautiful shade of brown.</h2>
+
+                <p>
+                    Your eyes are ridiculously pretty,
+                    and I hope you never forget just how lovely
+                    you are.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- PHOTO 4 -->
+        <div class="memory">
+
+            <div class="photo-frame">
+                <img src="pretty4.jpg" alt="A beautiful picture of Zai">
+            </div>
+
+            <div class="compliment">
+                <div class="little-heart">♡</div>
+
+                <h2>You deserve to see yourself the way others do.</h2>
+
+                <p>
+                    This picture is absolutely hilarious
+                  I had to include it
+                       (still looking cute)
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- PHOTO 5 -->
+        <div class="memory">
+
+            <div class="photo-frame">
+                <img src="pretty5.jpg" alt="A beautiful picture of Zai">
+            </div>
+
+            <div class="compliment">
+                <div class="little-heart">♡</div>
+
+                <h2>Never forget how special you are.</h2>
+
+                <p>
+                    You've been one of my closest friends for a long
+                    time, and even if we don't talk as much lately,
+                    I still care about you more than you probably know.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LETTER -->
+    <section class="final-section">
+
+        <h2>And I have one more thing to tell you...</h2>
+
+        <p>
+            I couldn't fit everything I wanted to say here.
+            So there's one last little surprise waiting for you. ♡
+        </p>
+
+        <a href="letter.html" class="letter-link">
+            <img
+                src="letter.png"
+                alt="A letter waiting to be opened"
+                class="letter-image"
+            >
+
+            <div class="click-text">
+                open me ♡
+            </div>
+        </a>
+
+    </section>
+
+</div>
+
+</body>
+</html>
